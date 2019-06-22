@@ -36,24 +36,24 @@ class pilihan_kamar{
 	}
 }
 			
-public class ProjectUas {
+public class Tester1 {
      String getProjectUas(){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
 	}
-	
+
     public static void main(String[] args) {
 		menu_utama first = new menu_utama();
 		first.menut();
-		
+
 		pilihan_kamar menu = new pilihan_kamar();
 		menu.tampil_menu();
-		
+
 		Rincian Project = new Rincian();
 		Project.print();
 	}
-}	
+}
 class Rincian{
 	public void print(){
 			int pil,pilih;
@@ -62,7 +62,7 @@ class Rincian{
 			int [] dp = new int [100];
 			int [] harga = new int [100];
 			int jumlah_pesanan;
-				ProjectUas tgl = new ProjectUas();
+				Tester1 tgl = new Tester1();
 				String [] Nama = new String [100];
 				String [] Alamat = new String [100];
 				String [] Tanggal =new String [100];
@@ -73,26 +73,26 @@ class Rincian{
 				String [] k ={"Standart","Superior","Deluxe","Studio","Suite"};
 				String [] f ={"Televisi","Kipas Angin","AC","Kamar Mandi Luar","Kamar Mandi Dalam","Breakfast","Pijat","Lunch","Dinner","Swimming Pool"};
 				String ulangi,ulangi2;
-					
+
 					Scanner scan = new Scanner(System.in);
 					Scanner input = new Scanner(System.in);
 					Scanner inputString = new Scanner(System.in);
 					Scanner scen = new Scanner(System.in);
 					Scanner kmr = new Scanner(System.in);
 					Scanner banyakpesanan = new Scanner(System.in);
-							
-						
-			System.out.println("_________________________________________");	
+
+
+			System.out.println("_________________________________________");
 			System.out.print("| Masukan banyak pesanan\t: ");
 			jumlah_pesanan = banyakpesanan.nextInt();
-			
-			
+
+
 
 		do {
 
 		for (int i=0;i<jumlah_pesanan;i++){
 			do {
-					
+
 					pilihan_kamar menu = new pilihan_kamar();
 					menu.tampil_menu();
 		System.out.println("_________________________________________");
@@ -124,12 +124,12 @@ class Rincian{
 						System.out.println("|\tKAMAR YANG ANDA PILIH TIDAK ADA");
 						break;
 					}
-				
+
 					System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
 					System.out.print("Pilih Kamar Lain ? (ya/tidak) : ");
 					ulangi2 = scan.nextLine();
 			}while (ulangi2.equals("ya"));
-				
+
 		System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
 		System.out.print("\nNo Booking\t  : ");
 				NoBooking[i] = inputString.nextLine();
@@ -150,14 +150,14 @@ class Rincian{
 		System.out.print("Uang Deposit\t  : ");
 				dp [i]= input.nextInt();
 		System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
-		
-		
-	
-		
+
+
+
+
                 System.out.println("==========================================================================");
 		for (int c=0;c<1;c++){
 			if (pil == 1){
-						System.out.println("|\tTYPE KAMAR YANG DI PILIH  : " + k[0]+"ATAS NAMA" + Nama[i]);		
+						System.out.println("|\tTYPE KAMAR YANG DI PILIH  : " + k[0]+"ATAS NAMA" + Nama[i]);
 						ks[i] = k[0];
 					}else if(pil == 2){
 						System.out.println("|\tTYPE KAMAR YANG DI PILIH  : " + k[1]+"ATAS NAMA" + Nama[i]);
@@ -181,9 +181,9 @@ class Rincian{
 		}
 	}
 		System.out.println("==========================================================================");
-		
-		
-		
+
+
+
 	Scanner pilihan = new Scanner(System.in);
 	System.out.println("\n==========================================================================");
 	System.out.println("| \t\t\t TAMPILKAN TRANSAKSI PESANAN \t\t\t |");
@@ -195,7 +195,7 @@ class Rincian{
 				pilih = pilihan.nextInt();
 				if (pilih == 1){
 					for (i=0;i<1;i++)
-						System.out.println("==========================================================================\n|BERIKUT ADALAH RINCIAN PEMESANAN SAUDARA  "								
+						System.out.println("==========================================================================\n|BERIKUT ADALAH RINCIAN PEMESANAN SAUDARA  "
 									+Nama[i]+" TYPE KAMAR " + ks[i]+ "\n--------------------------------------------------------------------------\n|KODE BOOKING\t\t : "+NoBooking[i]+"\n|NAMA TAMU\t\t : "
 									+Nama[i]+"\n|NO KTP\t\t\t : "+NoKTP[i]+"\n|ALAMAT\t\t\t : "+Alamat[i]+"\n|NO TELP\t\t : "
 									+NoTelp[i]+"\n|TANGGAL MENGINAP\t : "+Tanggal[i]+"\n|JUMLAH PESAN KAMAR\t : "+Jumlah[i]
@@ -204,7 +204,7 @@ class Rincian{
 									+"\n==========================================================================");
 				}else if (pilih == 2){
 					for (i=0;i<3;i++)
-						System.out.println("==========================================================================\n|BERIKUT ADALAH RINCIAN PEMESANAN SAUDARA  "								
+						System.out.println("==========================================================================\n|BERIKUT ADALAH RINCIAN PEMESANAN SAUDARA  "
 									+Nama[i]+" TYPE KAMAR " + ks[i]+ "\n--------------------------------------------------------------------------\n|KODE BOOKING\t\t : "+NoBooking[i]+"\n|NAMA TAMU\t\t : "
 									+Nama[i]+"\n|NO KTP\t\t\t : "+NoKTP[i]+"\n|ALAMAT\t\t\t : "+Alamat[i]+"\n|NO TELP\t\t : "
 									+NoTelp[i]+"\n|TANGGAL MENGINAP\t : "+Tanggal[i]+"\n|JUMLAH PESAN KAMAR\t : "+Jumlah[i]
