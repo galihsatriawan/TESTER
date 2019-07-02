@@ -14,6 +14,9 @@ public class Tester3 {
             "",//jumlah hari peminjaman
             "",//tgl awal pinjam
             ""}};//tgl akhir pinjam
+    static String member[][] = new String[100][6];
+    static int banyak_member = 0;
+    // id, Ktp, nama,alamat, notelp,banyak_order
     static String kendaraan[][] = {
             {"L1", "LEXI", "1", "150000"},
             {"JP1", "Jeep", "0", "500000"}
@@ -29,9 +32,10 @@ public class Tester3 {
         System.out.print("========= Silahkan Pilih Menu =======");
         System.out.print("\n 1. Peminjaman Kendaraan");
         System.out.print("\n 2. Masukkan Pengembalian");
-        System.out.print("\n 3. Tampilkan Info Member");
-        System.out.println("\n 4. Tampilkan Info Kendaraan");
-        System.out.println("\n 5. EXIT ");
+        System.out.print("\n 3. Tampilkan Seluruh Member");
+        System.out.print("\n 4. Tampilkan Tambah Member");
+        System.out.println("\n 5. Tampilkan Info Kendaraan");
+        System.out.println("\n 0. EXIT ");
 
         System.out.print(" Masukkan Pilihan = ");
         menu = a.nextInt();
@@ -39,15 +43,78 @@ public class Tester3 {
             case 1:
                 menu1();
                 break;
-            //case 2 : menu2();break;
-            //case 3 : menu3();break;
-            //case 4 : menu4();break;
+//            case 2:menu2();break;
+            case 3 : menu3();break;
+            case 4 : menu4();break;
             //case 5 : menu5();break;
         }
     }
 
     public static void menu1() {
         form_pinjam();
+    }
+
+    public static void menu4() {
+        form_tambah_member();
+    }
+    public static void menu3() {
+        seluruh_member();
+        dashboard();
+    }
+    public static void seluruh_member(){
+        if(banyak_member!= 0){
+            for (int i= 1;i<=banyak_member;i++){
+                String id = member[i][0];
+                String ktp = member[i][1];
+                String nama = member[i][2];
+                System.out.println(id+"\t\t"+ktp+"\t\t"+nama);
+            }
+        }else{
+            System.out.println("Belum Ada member");
+        }
+
+
+    }
+    public static void form_tambah_member() {
+        Scanner a = new Scanner(System.in);
+        String nama, alamat, notelp, ktp, kodekendaraan, hari, tglawal, tglakhir;
+        boolean vktp = false, vkendaraan = false;
+
+        do {
+            System.out.print("\n ====== FORM MEMBER ======");
+            System.out.print("\n Masukkan No KTP anda = ");
+            ktp = a.next();
+            System.out.print("Masukkan Nama Anda = ");
+            nama = a.next();
+            System.out.print("Masukkan Alamat Anda = ");
+            alamat = a.next();
+            System.out.print("Masukkan No Telp Anda = ");
+            notelp = a.next();
+
+            if (vktp(ktp) == true) {
+                //proses menyimpan
+                banyak_member = banyak_member+1;
+                int id = banyak_member;  //dibuat untuk acuan id peminjam
+                int no = id;
+
+
+
+                member[no][0] = String.valueOf(no);
+                member[no][1] = ktp;
+                member[no][2] = nama;
+                member[no][3] = alamat;
+                member[no][4] = notelp;
+                member[no][5] = "0"; //belum pernah pesan
+
+                vktp = true;
+
+                System.out.println("Member Berhasil ditambahkan");
+                dashboard();
+
+            } else {
+                System.out.println("NO KTP SALAH !!!! ");
+            }
+        } while (vktp == false);
     }
 
     public static void form_pinjam() {
