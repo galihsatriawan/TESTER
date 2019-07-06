@@ -2,6 +2,7 @@ package Tester4;
 
 import java.util.Scanner;
 
+import static Tester4.barang_baru.init;
 import static Tester4.menu_utama.menu;
 
 /**
@@ -13,6 +14,7 @@ public class login {
         System.out.println("||                 SELAMAT DATANG                   ||");
         System.out.println("||         TOKO JUAL BELI HARDWARE KOMPUTER         ||");
         System.out.println("**==================================================**\n");
+        init();
         masuk();
     }
 
