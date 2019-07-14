@@ -16,6 +16,7 @@ public class Tester3 {
             ""}};//tgl akhir pinjam
     static String member[][] = new String[100][6];
     static int banyak_member = 0;
+    static int id_terakhir =0 ;
     // id, Ktp, nama,alamat, notelp,banyak_order
     static String kendaraan[][] = {
             {"L1", "LEXI", "1", "150000"},
@@ -33,8 +34,9 @@ public class Tester3 {
         System.out.print("\n 1. Peminjaman Kendaraan");
         System.out.print("\n 2. Masukkan Pengembalian");
         System.out.print("\n 3. Tampilkan Seluruh Member");
-        System.out.print("\n 4. Tampilkan Tambah Member");
-        System.out.println("\n 5. Tampilkan Info Kendaraan");
+        System.out.print("\n 4. Fitur Tambah Member");
+        System.out.print("\n 5. Fitur Hapus Member");
+        System.out.println("\n 6. Tampilkan Info Kendaraan");
         System.out.println("\n 0. EXIT ");
 
         System.out.print(" Masukkan Pilihan = ");
@@ -46,7 +48,7 @@ public class Tester3 {
 //            case 2:menu2();break;
             case 3 : menu3();break;
             case 4 : menu4();break;
-            //case 5 : menu5();break;
+            case 5 : menu5();break;
         }
     }
 
@@ -56,6 +58,9 @@ public class Tester3 {
 
     public static void menu4() {
         form_tambah_member();
+    }
+    public static void menu5(){
+        form_hapus_member();
     }
     public static void menu3() {
         seluruh_member();
@@ -93,13 +98,15 @@ public class Tester3 {
 
             if (vktp(ktp) == true) {
                 //proses menyimpan
+
+                id_terakhir = id_terakhir+1;
                 banyak_member = banyak_member+1;
-                int id = banyak_member;  //dibuat untuk acuan id peminjam
-                int no = id;
+                int id = id_terakhir;  //dibuat untuk acuan id peminjam
+                int no = banyak_member;
 
 
 
-                member[no][0] = String.valueOf(no);
+                member[no][0] = String.valueOf(id);
                 member[no][1] = ktp;
                 member[no][2] = nama;
                 member[no][3] = alamat;
@@ -115,6 +122,38 @@ public class Tester3 {
                 System.out.println("NO KTP SALAH !!!! ");
             }
         } while (vktp == false);
+    }
+    public static void form_hapus_member(){
+        seluruh_member();
+        Scanner input = new Scanner(System.in);
+        int id_hapus;
+        System.out.print("Masukkan ID Member yang ingin dihapus : "); id_hapus =input.nextInt();
+        //Search id
+        int index_ditemukan = -1 ;
+        for(int i=1;i<=banyak_member;i++){
+            if(member[i][0].equals(String.valueOf(id_hapus))){
+                index_ditemukan = i;
+                break;
+            }
+        }
+        if(index_ditemukan == -1) {
+            System.out.println("ID tidak ditemukan");
+        }else{
+            for(int j= index_ditemukan+1;j<=banyak_member;j++){
+                member[j-1][0] =member[j][0];
+                member[j-1][1] =member[j][1];
+                member[j-1][2] =member[j][2];
+                member[j-1][3] =member[j][3];
+                member[j-1][4] =member[j][4];
+                member[j-1][5] =member[j][5];
+
+
+            }
+            banyak_member--;
+            System.out.println("Member berhasil terhapus");
+        }
+
+        dashboard();
     }
 
     public static void form_pinjam() {
